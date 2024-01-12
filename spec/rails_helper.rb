@@ -22,6 +22,8 @@ require 'rspec/rails'
 #
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
+config.include Shoulda::Matchers::ActiveModel, type: :model
+
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
@@ -55,11 +57,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.include Shoulda::Matchers::ActiveModel, type: :model
 
-  config.shoulda_matchers.integrate do |with|
-    with.test_framework :rspec
-    with.library :rails
   
-end
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
